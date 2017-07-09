@@ -1,6 +1,6 @@
 # Common Interview Questions
 
-Contains various technical interview questions and answers on data structures and algorithms, including binary search trees, linked lists, graphs, and string manipulation. Questions are solved only using Python and it's standard library. Each file contains a question description, an example answer, and several test cases that are guaranteed to pass. Source of each question is noted where appropriate. 
+Contains various technical interview questions and answers on data structures and algorithms, including binary search trees, linked lists, graphs, and string manipulation. Questions are solved only using Python and its standard library. Each file contains a question description, an example answer, and several test cases that are guaranteed to pass. Source of each question is noted where appropriate. 
 
 **Example Questions:**
 
