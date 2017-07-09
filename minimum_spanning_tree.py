@@ -6,6 +6,8 @@
    {'A': [('B', 2)],
     'B': [('A', 2), ('C', 5)], 
     'C': [('B', 5)]}
+
+    ** Taken from Udacity Machine Learning Nanodegree Program **
 """
 
 from collections import defaultdict

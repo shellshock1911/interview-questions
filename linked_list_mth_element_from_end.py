@@ -1,4 +1,7 @@
-"""Find the element in a singly linked list that's m elements from the end."""
+"""Find the element in a singly linked list that's m elements from the end.
+
+   ** Taken from Udacity Machine Learning Nanodegree Program **
+"""
 
 class Node(object):
   def __init__(self, data):
@@ -18,7 +21,7 @@ class LinkedList(object):
         else:
             self.head = new_element
 
-def ll_mth_element_from_end(ll, m):
+def mth_element_from_end(ll, m):
     
     if not ll:
         return None
@@ -45,10 +48,10 @@ def ll_mth_element_from_end(ll, m):
 ########################################
 
 ll = LinkedList()
-print ll_mth_element_from_end(ll, 4)
+print mth_element_from_end(ll, 4)
 # Output == None
 ll = None
-print ll_mth_element_from_end(ll, 6)
+print mth_element_from_end(ll, 6)
 # Output == None
 a, b, c, d, e, f, g = Node(1), Node(2), Node(3), Node(4), Node(5), Node(6), Node(7)
 ll = LinkedList(a)
@@ -58,11 +61,11 @@ ll.append(d)
 ll.append(e)
 ll.append(f)
 ll.append(g)
-print ll_mth_element_from_end(ll, 3)
+print mth_element_from_end(ll, 3)
 # Output == 5
-print ll_mth_element_from_end(ll, 1)
+print mth_element_from_end(ll, 1)
 # Output == 7
-print ll_mth_element_from_end(ll, 7)
+print mth_element_from_end(ll, 7)
 # Output == 1
-print ll_mth_element_from_end(ll, 8)
+print mth_element_from_end(ll, 8)
 # Output == None

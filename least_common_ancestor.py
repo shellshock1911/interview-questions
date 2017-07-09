@@ -11,6 +11,8 @@
    [0, 0, 0, 0, 0],
    [1, 0, 0, 0, 1],
    [0, 0, 0, 0, 0]]
+
+   ** Taken from Udacity Machine Learning Nanodegree Program **
 """
 
 class TreeNode(object):

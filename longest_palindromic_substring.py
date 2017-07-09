@@ -1,4 +1,7 @@
-"""Given a string a, find the longest palindromic substring contained in a."""
+"""Given string a, find the longest palindromic substring contained in a.
+
+   ** Taken from Udacity Machine Learning Nanodegree Program **
+"""
 
 def LPS(a):
     

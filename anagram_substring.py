@@ -1,4 +1,7 @@
-"""Given two strings s and t, determine whether some anagram of t is a substring of s. """
+"""Given two strings s and t, determine whether some anagram of t is a substring of s. 
+
+   ** Taken from Udacity Machine Learning Nanodegree Program **
+"""
 
 from collections import Counter
 
