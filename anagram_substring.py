@@ -1,7 +1,9 @@
+"""Given two strings s and t, determine whether some anagram of t is a substring of s. """
+
 from collections import Counter
 
 def anagram_substring(s, t):
-    
+
     if not t or not s:
         return False
     

@@ -1,3 +1,5 @@
+"""Given a string a, find the longest palindromic substring contained in a."""
+
 def LPS(a):
     
     if not a:
