@@ -17,14 +17,14 @@ def anagram_substring(s, t):
     
     t_count = Counter(t)
     
-    for i in range(len(t)):
+    for i in xrange(len(t)):
         char = s[i]
         if char in t_count:
             t_count[char] -= 1
     
     diff = sum(t_count[char] for char in t_count if t_count[char] >= 0)
     
-    for i in range(t_len, s_len):
+    for i in xrange(t_len, s_len):
         if diff == 0:
             return True
         else:
