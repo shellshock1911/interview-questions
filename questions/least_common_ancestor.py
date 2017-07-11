@@ -28,53 +28,40 @@ class BST(object):
         self.tree = T
 
     def insert(self, new_val):
-        self.insert_helper(self.root, new_val)
+        self._insert_helper(self.root, new_val)
 
-    def insert_helper(self, current, new_val):
+    def _insert_helper(self, current, new_val):
         if current.value < new_val:
             if current.right:
-                self.insert_helper(current.right, new_val)
+                self._insert_helper(current.right, new_val)
             else:
                 current.right = TreeNode(new_val)
         else:
             if current.left:
-                self.insert_helper(current.left, new_val)
+                self._insert_helper(current.left, new_val)
             else:
                 current.left = TreeNode(new_val)
     
     def build_tree(self):
-        self.build_tree_helper(self.root.value, self.tree)
+        self._build_tree_helper(self.root.value, self.tree)
     
-    def build_tree_helper(self, index, T):
+    def _build_tree_helper(self, index, T):
         indices = [i for i, x in enumerate(T[index]) if x == 1]
         for i in indices:
             self.insert(i)
-            self.build_tree_helper(i, T)
-    
-    def search(self, start, find_val):
-        return self.search_helper(start, find_val)
-                
-    def search_helper(self, current, find_val):
-        if current:
-            if current.value == find_val:
-                return True
-            elif current.value < find_val:
-                return self.search_helper(current.right, find_val)
-            else:
-                return self.search_helper(current.left, find_val)
-        return False
+            self._build_tree_helper(i, T)
 
     
-def LCA_helper(current, n1, n2):
+def _LCA_helper(current, n1, n2):
     
     if current is None:
         return None
     
     if current.value > n1 and current.value  > n2:
-        return LCA_helper(current.left, n1, n2)
+        return _LCA_helper(current.left, n1, n2)
  
     if current.value < n1 and current.value < n2:
-        return LCA_helper(current.right, n1, n2)
+        return _LCA_helper(current.right, n1, n2)
     
     return current.value
 
@@ -86,7 +73,7 @@ def LCA(T, r, n1, n2):
     tree = BST(T, r)
     tree.build_tree()
     current = tree.root
-    return LCA_helper(current, n1, n2)
+    return _LCA_helper(current, n1, n2)
 
 ########################################
 # Test Cases
