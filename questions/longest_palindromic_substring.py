@@ -8,34 +8,29 @@ def LPS(a):
     if not a:
         return None
     
-    max_length = 1
+    length = 1
+    first = 0
     
-    start = 0
-    length = len(a)
-    
-    low = 0
-    high = 0
-    
-    for i in xrange(1, length):
-        low = i - 1
-        high = i
-        while low >= 0 and high < length and a[low] == a[high]:
-            if high - low + 1 > max_length:
-                start = low
-                max_length = high - low + 1
-            low -= 1
-            high += 1
+    for i in xrange(1, len(a)):
+        start = i - 1
+        end = i
+        while start >= 0 and end < len(a) and a[start] == a[end]:
+            if end - start + 1 > length:
+                first = start 
+                length = end - start + 1
+            start -= 1
+            end += 1
         
-        low = i - 1
-        high = i + 1
-        while low >= 0 and high < length and a[low] == a[high]:
-            if high - low + 1 > max_length:
-                start = low
-                max_length = high - low + 1
-            low -= 1
-            high += 1
+        start = i - 1
+        end = i + 1
+        while start >= 0 and end < len(a) and a[start] == a[end]:
+            if end - start + 1 > length:
+                first = start
+                length = end - start + 1
+            start -= 1
+            end += 1
     
-    return a[start:start + max_length]
+    return a[first:first + length]
 
 ########################################
 # Test Cases
