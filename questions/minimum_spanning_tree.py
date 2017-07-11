@@ -42,7 +42,7 @@ class Graph(object):
             self.parent[root1] = root2
             self.rank[root2] += 1      
     
-    def makeset(self, vertex):
+    def make_disjoint_sets(self, vertex):
         self.parent[vertex] = vertex
         self.rank[vertex] = 0
 
@@ -62,9 +62,12 @@ def MST(G):
             graph.edges.append(Edge(key, value[0], value[1]))
     
     min_spanning_tree = []
+    
     for vertex in graph.vertices:
-            graph.makeset(vertex)
+            graph.make_disjoint_sets(vertex)
+            
     graph.edges = sorted(graph.edges, key= lambda x: x.weight)
+    
     for edge in graph.edges:
         root1 = graph.find(edge.vertex1)
         root2 = graph.find(edge.vertex2)
@@ -73,9 +76,18 @@ def MST(G):
             graph.union(root1, root2)
     
     mst_defaultdict = defaultdict(list)
+    inverse_defaultdict = defaultdict(list)
+    
     for edge in min_spanning_tree:
         mst_defaultdict[edge.vertex1].append((edge.vertex2, edge.weight))
         
+    for key in mst_defaultdict:
+            for value in mst_defaultdict[key]:
+                inverse_defaultdict[value[0]].append((key, value[1]))
+    
+    for k, v in inverse_defaultdict.items():
+        mst_defaultdict[k].extend(v)
+    
     return dict(mst_defaultdict)
     
 ########################################
@@ -97,5 +109,22 @@ G = {
 print MST(G)
 # Output == {
 #            'A': [('B', 4), ('C', 1)],
-#            'C': [('D', 2)]
+#            'B': [('A', 4)]
+#            'C': [('A', 1), ('D', 2)],
+#            'D': [(C, 2)]
+#           }
+G = {
+     'A': [('B', 1), ('C', 7)],
+     'B': [('A', 1), ('C', 5 ), ('D', 4), ('E', 3)],
+     'C': [('A', 7), ('B', 5), ('E', 6)],
+     'D': [('B', 4), ('E', 2)],
+     'E': [('B', 3), ('C', 6), ('D', 2)]
+    }
+print MST(G)
+# Output == {
+#            'A': [('B', 1)],
+#            'B': [('A', 1), ('C', 5), ('E', 3)],
+#            'C': [('B', 5)],
+#            'D': [('E', 2)],
+#            'E': [('B', 3), ('D', 2)]
 #           }
